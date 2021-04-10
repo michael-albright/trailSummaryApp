@@ -44,9 +44,9 @@ public class TrailForm
 		super();
 	}
 
-	public TrailForm(@NotNull @Size(min = 1, max = 10) String firstName,
-			@NotNull @Size(min = 8, max = 30) String lastName, @NotNull Integer amountOfHikers,
-			@NotNull @Min(0) @Max(7) Integer nightsOnTrail, Date startedAt) {
+	public TrailForm(@NotNull String firstName, @NotNull String lastName, @NotNull @Min(0) Integer amountOfHikers,
+						@NotNull @Min(0) @Max(7) Integer nightsOnTrail, Date startedAt)
+	{
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;

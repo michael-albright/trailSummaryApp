@@ -26,6 +26,14 @@ public class TrailFormController implements WebMvcConfigurer
 		return "index";
 	}
 	
+	//**ADDED A GETMAPPING FOR THE LOGIN PAGEd
+	@GetMapping("/login")
+	public String showLogin()
+	{
+		return "login";
+	}
+	
+	
 	@PostMapping("/")
 	public String addNewHiker(@Valid TrailForm hiker, BindingResult bindingResult, Model model)
 	{
@@ -43,6 +51,7 @@ public class TrailFormController implements WebMvcConfigurer
 			return "trailMap";
 		}
 	}
+	
 	
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) 
