@@ -25,22 +25,29 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 			.antMatchers("/index").permitAll()
 			.antMatchers("/").permitAll()
 			.antMatchers("/trailMap").permitAll()
-			.antMatchers("/styleSheets/index.css").permitAll()
-			.antMatchers("/styleSheets/trailMap.css").permitAll()
+			.antMatchers("/confirmation").permitAll()
+			.antMatchers("/styleSheets/custom.css").permitAll()
+//			.antMatchers("/styleSheets/index.css").permitAll()
+//			.antMatchers("/styleSheets/trailMap.css").permitAll()
 			.antMatchers("/images/abstract-forest.svg").permitAll()
 			.antMatchers("/images/torreyPinesTrailMap.png").permitAll()
 			.anyRequest().authenticated()
-			
 		.and()
 			.formLogin()
 			.loginPage("/login").permitAll()
 			
 		.and()
 			.logout().permitAll();
+		http.csrf().disable();
+		http.headers().frameOptions().disable();
+		
+		
 		
 		
 			
 	}
+	
+	// IMPLEMENT A METHOD TO ADD USERS WITHOUT ADDING THIS CODE, REPEATED, OVER AND OVER
 	
 	@Bean
 	@Override

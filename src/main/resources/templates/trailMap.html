@@ -5,11 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Trail Map</title>
-<link th:href="@{/styleSheets/trailMap.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/styleSheets/custom.css}" rel="stylesheet" type="text/css">
 </head>
-<body class="background">
+<body id="background">
 	<div class="container">
 		<img th:src="@{/images/torreyPinesTrailMap.png}" class="image" alt="Torrey Pines Trail Map">
 	</div>
+<a th:href="@{/index}"><small>Home</small></a>
 </body>
 </html>

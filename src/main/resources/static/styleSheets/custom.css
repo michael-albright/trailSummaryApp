@@ -1,0 +1,112 @@
+#background {
+	background-color:rgb(199,188,142);
+	
+}
+
+body {
+	text-align:center;
+	margin-top:10%;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:10%;
+	width: 60%;
+}
+
+
+.container {
+	display: flex;
+	background-image: url("/images/newForest.png");
+	border-radius: 20px;
+	background-size: cover;
+/* 	filter: saturate(80%); */
+	
+}
+
+/* #backImage { */
+/* 	background-image: url("/images/abstract-forest.svg"); */
+/* 	background-size: cover; */
+/* } */
+
+/* index only */
+
+.form-label {
+	color: rgb(299, 95, 15);
+	text-shadow: white .5px .5px;
+	
+}
+
+#button {
+	margin-top: 25px;
+}
+
+/* all forms with inputs ( index and login) */
+
+#form {
+	width: 100%;
+	padding: 20px;
+}  
+
+.form-control {
+	text-align: center;
+	background-color: transparent;
+	margin-bottom: 20px;
+	
+}
+
+ /* trailMap only */
+ 
+ .image {
+	margin-top: 10%;
+	margin-bottom: 10%;
+	margin-left:auto;
+	margin-right:auto;
+	width: 80%;
+}
+
+.text {
+	color: red;
+	padding: 30px;
+}
+
+/* dataSummary only */
+
+.data {
+	color: rgb(299, 95, 15);
+	
+	
+}
+
+.head {
+	color: rgb(299, 95, 15);
+	padding-top: 20px;
+	margin: 0;
+	opacity: 1;
+	display: block;
+}
+
+
+
+.signout {
+	margin: 25px;
+}
+
+/* LOGIN ONLY */
+
+.box {
+	display: flex;
+}
+
+.input{
+	margin: auto;	
+}
+
+#form2 {
+	width: 100%;
+	padding: 20px;
+}  
+
+.title {
+	color: rgb(299, 95, 15);
+	text-shadow: rgb(285, 95, 15) .5px .5px;
+	padding-bottom: 12px;
+}

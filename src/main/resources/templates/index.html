@@ -8,30 +8,32 @@
 		rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
 		crossorigin="anonymous">
 		
-<link th:href="@{/styleSheets/index.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/styleSheets/custom.css}" rel="stylesheet" type="text/css">
 </head>
+
 <body id="background">
-	<div class=container>
+<!-- <div id="bg"> -->
+	<div class="container">
 	<form th:action="@{/}" th:object="${trailForm}" method="post" id="form">
 		<div class="mb-3">
-			<label for="firstName" class="form-label">First Name</label> 
-			<input type="text" th:field="*{firstName}" class="form-control" id="firstName">
-			<div th:if="${#fields.hasErrors('firstName')}"
-					th:errors="*{firstName}">
+			<label for="name" class="form-label">Your Name</label> 
+			<input type="text" th:field="*{name}" class="form-control" id="firstName">
+			<div th:if="${#fields.hasErrors('name')}"
+					th:errors="*{name}">
 			</div>
 		</div>
 		<div class="mb-3">
-			<label for="lastName" class="form-label">Last Name</label> 
-			<input type="text" th:field="*{lastName}" class="form-control" id="lastName">
-			<div th:if="${#fields.hasErrors('lastName')}"
-					th:errors="*{lastName}">
+			<label for="nameOfTrail" class="form-label">Name of Trail</label> 
+			<input type="text" th:field="*{nameOfTrail}" class="form-control" id="people">
+			 <div th:if="${#fields.hasErrors('nameOfTrail')}"
+					th:errors="*{nameOfTrail}">
 			</div>
 		</div>
 		<div class="mb-3">
-			<label for="amountOfHikers" class="form-label">Number of Hikers</label> 
-			<input type="number" th:field="*{amountOfHikers}" class="form-control" id="people">
-			 <div th:if="${#fields.hasErrors('amountOfHikers')}"
-					th:errors="*{amountOfHikers}">
+			<label for="contactEmail" class="form-label">Emergency Contact Email</label> 
+			<input type="text" th:field="*{contactEmail}" class="form-control" id="lastName">
+			<div th:if="${#fields.hasErrors('contactEmail')}"
+					th:errors="*{contactEmail}">
 			</div>
 		</div>
 		<div class="mb-3">
@@ -40,16 +42,27 @@
 			<div th:if="${#fields.hasErrors('nightsOnTrail')}"
 					th:errors="*{nightsOnTrail}">
 			</div>
+		</div>
+		<div class="mb-3">
+			<label for="location" class="form-label">Trail Location <small>(city, state)</small></label> 
+			<input type="text" th:field="*{location}" class="form-control" id="lastName">
+			<div th:if="${#fields.hasErrors('location')}"
+					th:errors="*{location}">
+			</div>
+		</div>
 		<div>
 			<button type="submit" class="btn btn-warning" id="button">Submit</button>
 		</div>
-		</div>
 	</form>
-</div>
+	</div>
 
 <div class="link">
+<!-- 	<a th:href="@{'http://localhost:8080/console/'}"><small>Data Summary</small></a> -->
+	
 	<a th:href="@{/dataSummary}"><small>Data Summary</small></a>
-</div>
+	
+	</div>
+
 <script
 	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
 	integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
@@ -60,3 +73,15 @@
 	crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+		
+		<!-- Last Name Submission -->
+<!-- 		<div class="mb-3"> -->
+<!-- 			<label for="lastName" class="form-label">Emergency Contact E-mail</label>  -->
+<!-- 			<input type="text" th:field="*{lastName}" class="form-control" id="lastName"> -->
+<!-- 			<div th:if="${#fields.hasErrors('lastName')}" -->
+<!-- 					th:errors="*{lastName}"> -->
+<!-- 			</div> -->
+			<!-- Email Submission -->
+		

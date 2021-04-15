@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -22,19 +24,25 @@ public class TrailForm
 	private long id;
 	
 	@NotNull
-	private String firstName;
+	@NotEmpty
+	private String name;
+	
+	@NotNull 
+	@Email
+	@NotEmpty
+	private String contactEmail;
 	
 	@NotNull
-	private String lastName;
+	@NotEmpty
+	private String nameOfTrail;
 	
 	@NotNull
 	@Min(0)
-	private Integer amountOfHikers;
-	
-	@NotNull
-	@Min(0)
-	@Max(7)
 	private Integer nightsOnTrail;
+	
+	@NotNull 
+	@NotEmpty
+	private String location;
 	
 	@Column
 	@CreationTimestamp
@@ -44,39 +52,42 @@ public class TrailForm
 		super();
 	}
 
-	public TrailForm(@NotNull String firstName, @NotNull String lastName, @NotNull @Min(0) Integer amountOfHikers,
-						@NotNull @Min(0) @Max(7) Integer nightsOnTrail, Date startedAt)
+	public TrailForm(@NotNull String name, @NotNull String contactEmail, 
+					@NotNull @Min(0) Integer nightsOnTrail, 
+					@NotNull String nameOfTrail, 
+					@NotNull String location, Date startedAt)
 	{
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.amountOfHikers = amountOfHikers;
+		this.name = name;
+		this.contactEmail = contactEmail;
+		this.nameOfTrail = nameOfTrail;
 		this.nightsOnTrail = nightsOnTrail;
+		this.location = location;
 		this.startedAt = startedAt;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getNameOfTrail() {
+		return nameOfTrail;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setNameOfTrail(String nameOfTrail) {
+		this.nameOfTrail = nameOfTrail;
 	}
 
-	public Integer getAmountOfHikers() {
-		return amountOfHikers;
+	public String getContactEmail() {
+		return contactEmail;
 	}
 
-	public void setAmountOfHikers(Integer amountOfHikers) {
-		this.amountOfHikers = amountOfHikers;
+	public void setContactEmail(String contactEmail) {
+		this.contactEmail = contactEmail;
 	}
 
 	public Integer getNightsOnTrail() {
@@ -87,6 +98,14 @@ public class TrailForm
 		this.nightsOnTrail = nightsOnTrail;
 	}
 	
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
 	public Date getStartedAt() {
 		return startedAt;
 	}
@@ -97,10 +116,10 @@ public class TrailForm
 
 	public String toString()
 	{
-		return "Details(ID: " + id + "First Name: " + this.firstName + 
-				"Last Name: " + this.lastName + "Amount of Hikers: " + 
-				this.amountOfHikers + "Nights out on Trail: " + this.nightsOnTrail +
-				"Start Date/Time: " + this.startedAt + ")";
+		return "Details(ID: " + id + "Name: " + this.name + "Nights out on Trail: "
+					+ this.nightsOnTrail + "Name of Trail: " + this.nameOfTrail +
+					"Emergency Contact: " + this.contactEmail + "Location of Trail: " 
+					+ this.location + "Start Date/Time: " + this.startedAt + ")";
 	}
 	
 	
