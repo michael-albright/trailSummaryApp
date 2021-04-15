@@ -23,44 +23,43 @@ import com.tts.trailsummaryapp.service.EmailService;
 import com.tts.trailsummaryapp.service.TrailFormService;
 
 @Controller
-public class TrailFormController implements WebMvcConfigurer
-{	
+public class TrailFormController implements WebMvcConfigurer {
 	@Autowired
 	private DataSummaryService dataSummaryService;
-	
+
 	@Autowired
 	private EmailService emailService;
-	
+
 	@Autowired
 	private TrailFormService trailFormService;
-	
+
 	@Autowired
 	private TrailFormRepository trailFormRepository;
-	
+
 	@GetMapping("/")
-	public String showTrailForm(TrailForm trailForm)
-	{
+	public String showTrailForm(TrailForm trailForm) {
 		return "index";
 	}
-	
+
 	@GetMapping("/index")
-	public String showHomePage(TrailForm trailForm)
-	{
+	public String showHomePage(TrailForm trailForm) {
 		return "index";
 	}
-	
-	//**ADDED A GETMAPPING FOR THE LOGIN PAGE
+
 	@GetMapping("/login")
-	public String showLogin()
-	{
+	public String showLogin() {
 		return "login";
 	}
-	
-	/* THE METHODS IN DATA SUMMARY GET CALLED ON HERE AND THEN USED IN HTML f.e. <p th:text${details}> </p> */
+
+	/*
+	 * THE METHODS IN DATA SUMMARY GET CALLED ON HERE AND THEN USED IN HTML f.e. <p
+	 * th:text${details}> </p>
+	 */
+
 	@GetMapping("/dataSummary")
-	public String showBackpackersStats(Model model)
-	{
-	/* EACH METHOD IS RAN INTO THYMELEAF BELOW */
+	public String showBackpackersStats(Model model) {
+		
+		/* EACH METHOD IS RAN INTO THYMELEAF BELOW */
 		String str1 = dataSummaryService.hikersAtNight();
 		model.addAttribute("details", str1);
 		String str2 = dataSummaryService.getPastHikes();
@@ -69,33 +68,10 @@ public class TrailFormController implements WebMvcConfigurer
 		model.addAttribute("trips", str3);
 		return "dataSummary";
 	}
-	
-//	@GetMapping("/confirmation")
-//	public String showEmailForm(Model model)
-//	{
-//		String emailSent = trailFormServicegetEmailSent();
-//		model.addAttribute("info", emailSent);
-//		return "confirmation";
-//	}
-	
-//	public String addNewHiker(@Valid TrailForm hiker, BindingResult bindingResult, Model model)
-//	{
-//		if(bindingResult.hasErrors()) {
-//			return "index";
-//		} else {
-//			hiker = trailFormRepository.save(hiker);
-//			model.addAttribute("name", hiker.getName());
-//			model.addAttribute("contactEmail", hiker.getContactEmail());
-//			model.addAttribute("nightsOnTrail", hiker.getNightsOnTrail());
-//			model.addAttribute("nameOfTrail", hiker.getNameOfTrail());
-//			model.addAttribute("location", hiker.getLocation());
-//			model.addAttribute("startedTrailAt", hiker.getStartedAt());
 
-	
 	@PostMapping("/")
-	public String addNewHiker(@Valid TrailForm trailForm, BindingResult bindingResult, Model model)
-	{
-		if(bindingResult.hasErrors()) {
+	public String addNewHiker(@Valid TrailForm trailForm, BindingResult bindingResult, Model model) {
+		if (bindingResult.hasErrors()) {
 			return "index";
 		} else {
 			trailForm = trailFormRepository.save(trailForm);
@@ -106,58 +82,21 @@ public class TrailFormController implements WebMvcConfigurer
 			model.addAttribute("nameOfTrail", trailForm.getNameOfTrail());
 			model.addAttribute("location", trailForm.getLocation());
 			model.addAttribute("startedTrailAt", trailForm.getStartedAt());
-			
-			
-//			String email = hiker.getContactEmail();
-//			
-//			//**right here i need to run a test to see if the email is legit
-//			
-//			String title = "**Your BUDDY is HIKING**";
-//			
-//			String emailMessage = "Name: " + hiker.getName() + " || " +
-//					"Nights on Trail: " + hiker.getNightsOnTrail() + " || " +
-//					"Name of Trail: " + hiker.getNameOfTrail() + " || " + 
-//					"Emergency Contact: " + hiker.getContactEmail() + " || " +
-//					"Location of Trail: " + hiker.getLocation() + " || " +
-//					"Date/Time Started: " + hiker.getStartedAt();
-//		
-//					emailService.sendMail(email, title, emailMessage);
 
-	
-	/* BELOW IS THE CALL TO RUN THE EMAIL RESPONSE */		
-	
+			/* BELOW IS THE CALL TO RUN THE EMAIL RESPONSE */
+			// **right here i need to run a test to see if the email is legit **/
 			String email = trailForm.getContactEmail();
-			
-			//**right here i need to run a test to see if the email is legit
-			
 			String title = "**Your BUDDY is HIKING**";
-			
-			String emailMessage = "Name: " + trailForm.getName() + " || " +
-					"Nights on Trail: " + trailForm.getNightsOnTrail() + " || " +
-					"Name of Trail: " + trailForm.getNameOfTrail() + " || " + 
-					"Emergency Contact: " + trailForm.getContactEmail() + " || " +
-					"Location of Trail: " + trailForm.getLocation() + " || " +
-					"Date/Time Started: " + trailForm.getStartedAt();
-		
-					emailService.sendMail(email, title, emailMessage);
-					
+			String emailMessage = "Name: " + trailForm.getName() + " || " + "Nights on Trail: "
+					+ trailForm.getNightsOnTrail() + " || " + "Name of Trail: " + trailForm.getNameOfTrail() + " || "
+					+ "Emergency Contact: " + trailForm.getContactEmail() + " || " + "Location of Trail: "
+					+ trailForm.getLocation() + " || " + "Date/Time Started: " + trailForm.getStartedAt() + " || ";
+
+			emailService.sendMail(email, title, emailMessage);
+
 			return "confirmation";
 		}
-		
+
 	}
 
 }
-	
-	//SCOTTS EXAMPLE
-//	@GetMapping("/dataSummary")
-//	public String showBackpackers(Model model)
-//	{
-//	        String dummySummary = trailFormService.hikersAtNight();
-//	        model.addAttribute("summary", dummySummary);
-//	       return "dataSummary";
-//	}
-	
-
-	
-	
-

@@ -26,100 +26,87 @@ import com.tts.trailsummaryapp.model.TrailForm;
 import com.tts.trailsummaryapp.repository.TrailFormRepository;
 
 @Service
-public class EmailService 
-{
-	//change made here
+public class EmailService {
 	@Autowired
 	private TrailFormRepository trailFormRepository;
-	
-	// change made here
-	public List<TrailForm> findByContactEmail(String contactEmail)
-	{
+
+	public List<TrailForm> findByContactEmail(String contactEmail) {
 		return trailFormRepository.findByContactEmail(contactEmail);
 	}
-	
-	//change made here
-	public List<TrailForm> findByStartedAt(Date startedAt)
-	{
+
+	public List<TrailForm> findByStartedAt(Date startedAt) {
 		return trailFormRepository.findByStartedAt(startedAt);
 	}
-	
+
+	/*
+	 * names of values that will exist in either application.properties or in
+	 * environment variables
+	 */
+
 	@Value("${mail.smtp.auth}")
 	String smtpAuth;
-	
+
 	@Value("${mail.smtp.starttls.enable}")
 	String tlsEnable;
-	
-	//names of values that will exist in either application.properties or in environment variables
+
 	@Value("${mail.smtp.host}")
 	String smtpHost;
-	
+
 	@Value("${mail.smtp.port}")
 	String smtpPort;
-	
+
 	@Value("${mail.smtp.ssl.trust}")
 	String sslTrust;
-	
+
 	@Value("${mail.smtp.password}")
 	String password;
-	
+
 	@Value("${mail.smtp.username}")
 	String username;
-	
+
 	Properties properties = new Properties();
-	
-	
+
 	@PostConstruct
-	public void init()
-	{
-	properties.put("mail.smtp.auth", smtpAuth);
-	properties.put("mail.smtp.starttls.enable", tlsEnable);
-	properties.put("mail.smtp.host", smtpHost);
-	properties.put("mail.smtp.port", smtpPort);
-	properties.put("mail.smtp.ssl.trust", sslTrust);
+	public void init() {
+		properties.put("mail.smtp.auth", smtpAuth);
+		properties.put("mail.smtp.starttls.enable", tlsEnable);
+		properties.put("mail.smtp.host", smtpHost);
+		properties.put("mail.smtp.port", smtpPort);
+		properties.put("mail.smtp.ssl.trust", sslTrust);
 	}
-	
-	private Session openSession()
-	{
-		return Session.getInstance(properties, new Authenticator() 
-		{
+
+	private Session openSession() {
+		return Session.getInstance(properties, new Authenticator() {
 			@Override
-			protected PasswordAuthentication getPasswordAuthentication()
-			{
-			return new PasswordAuthentication(username, password);
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
 			}
 		});
 	}
-	
-	public boolean sendMail(String email, String title, String emailMessage)
-	{
+
+	public boolean sendMail(String email, String title, String emailMessage) {
 		Session session = openSession();
 		Message message = new MimeMessage(session);
-	try
-	{
-		message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
-		message.setSubject(title);
+		try {
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
+			message.setSubject(title);
 
-		MimeBodyPart mimeBodyPart = new MimeBodyPart();
-		mimeBodyPart.setContent(emailMessage, "text/html");
+			MimeBodyPart mimeBodyPart = new MimeBodyPart();
+			mimeBodyPart.setContent(emailMessage, "text/html");
 
-		Multipart multipart = new MimeMultipart();
-		multipart.addBodyPart(mimeBodyPart);
-		
-		message.setContent(multipart);
+			Multipart multipart = new MimeMultipart();
+			multipart.addBodyPart(mimeBodyPart);
 
-		Transport.send(message);
-	}
-	catch (MessagingException e)
-	{
-		//Handle error case however you want here....
-		//Email wasnt sent
-		e.printStackTrace();
-		return false;
-	}
-	return true;
+			message.setContent(multipart);
+
+			Transport.send(message);
+		} catch (MessagingException e) {
+			/* Handle error case however you want here.... MUST DO!!! */
+			/* Email wasnt sent */
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 }
-	
-

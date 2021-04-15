@@ -12,31 +12,31 @@ body {
 	width: 60%;
 }
 
-
 .container {
-	display: flex;
 	background-image: url("/images/newForest.png");
-	border-radius: 20px;
 	background-size: cover;
-/* 	filter: saturate(80%); */
+	border-radius: 20px;
 	
 }
-
-/* #backImage { */
-/* 	background-image: url("/images/abstract-forest.svg"); */
-/* 	background-size: cover; */
-/* } */
 
 /* index only */
 
 .form-label {
-	color: rgb(299, 95, 15);
-	text-shadow: white .5px .5px;
+	color: rgb(299, 65, 15);
 	
+}
+
+.link {
+	text-decoration: none;
 }
 
 #button {
 	margin-top: 25px;
+	
+}
+
+#red {
+	font-weight: bold;
 }
 
 /* all forms with inputs ( index and login) */
@@ -49,7 +49,7 @@ body {
 .form-control {
 	text-align: center;
 	background-color: transparent;
-	margin-bottom: 20px;
+	margin-bottom: 17px;
 	
 }
 
@@ -71,22 +71,18 @@ body {
 /* dataSummary only */
 
 .data {
-	color: rgb(299, 95, 15);
-	
+	color: rgb(299, 65, 15);
 	
 }
 
 .head {
-	color: rgb(299, 95, 15);
+	color: rgba(169,75,47,255);
 	padding-top: 20px;
 	margin: 0;
-	opacity: 1;
 	display: block;
 }
 
-
-
-.signout {
+#signout {
 	margin: 25px;
 }
 
@@ -106,7 +102,30 @@ body {
 }  
 
 .title {
-	color: rgb(299, 95, 15);
-	text-shadow: rgb(285, 95, 15) .5px .5px;
-	padding-bottom: 12px;
+	color: rgb(169,75,47,255);
+	margin-bottom: 20px;
+}
+
+/* Confirmation Page */
+
+.success {
+		color: rgb(299, 65, 15);
+		padding-top: 20px;
+		margin: 0;
+		display: block;
+}
+
+.list {
+	color: white;
+	font-size: 17px;
+	margin: 0;
+	padding: 0;
+}
+
+/* Fancy Phrases */
+
+.style {
+	font-style: italic;
+	color: rgb(21,76,121);
+	
 }

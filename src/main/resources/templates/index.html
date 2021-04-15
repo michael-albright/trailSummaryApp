@@ -1,87 +1,78 @@
 <!DOCTYPE html>
-<!-- MADE CHANGE TO THYMELEAF INPUT FOR SECURITY -->
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 <meta charset="UTF-8">
 <title>Trail Form</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
-		rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
-		crossorigin="anonymous">
-		
-<link th:href="@{/styleSheets/custom.css}" rel="stylesheet" type="text/css">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+	crossorigin="anonymous">
+
+<link th:href="@{/styleSheets/custom.css}" rel="stylesheet"
+	type="text/css">
 </head>
 
 <body id="background">
-<!-- <div id="bg"> -->
 	<div class="container">
-	<form th:action="@{/}" th:object="${trailForm}" method="post" id="form">
-		<div class="mb-3">
-			<label for="name" class="form-label">Your Name</label> 
-			<input type="text" th:field="*{name}" class="form-control" id="firstName">
-			<div th:if="${#fields.hasErrors('name')}"
-					th:errors="*{name}">
+		<form th:action="@{/}" th:object="${trailForm}" method="post"
+			id="form">
+			<div class="mb-3">
+				<label for="name" class="form-label" id="red">Your Name</label> <input
+					type="text" th:field="*{name}" class="form-control" id="firstName">
+				<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+				</div>
 			</div>
-		</div>
-		<div class="mb-3">
-			<label for="nameOfTrail" class="form-label">Name of Trail</label> 
-			<input type="text" th:field="*{nameOfTrail}" class="form-control" id="people">
-			 <div th:if="${#fields.hasErrors('nameOfTrail')}"
-					th:errors="*{nameOfTrail}">
+			<div class="mb-3">
+				<label for="contactEmail" class="form-label" id="red">Emergency
+					Contact Email</label> <input type="text" th:field="*{contactEmail}"
+					class="form-control" id="lastName">
+				<div th:if="${#fields.hasErrors('contactEmail')}"
+					th:errors="*{contactEmail}"></div>
 			</div>
-		</div>
-		<div class="mb-3">
-			<label for="contactEmail" class="form-label">Emergency Contact Email</label> 
-			<input type="text" th:field="*{contactEmail}" class="form-control" id="lastName">
-			<div th:if="${#fields.hasErrors('contactEmail')}"
-					th:errors="*{contactEmail}">
+			<div class="mb-3">
+				<label for="nameOfTrail" class="form-label">Trail Name</label> <input
+					type="text" th:field="*{nameOfTrail}" class="form-control"
+					id="people">
+				<div th:if="${#fields.hasErrors('nameOfTrail')}"
+					th:errors="*{nameOfTrail}"></div>
 			</div>
-		</div>
-		<div class="mb-3">
-			<label for="nightsOnTrail" class="form-label">Number of Nights on Trail</label> 
-			<input type="number" th:field="*{nightsOnTrail}" class="form-control" id="nights">
-			<div th:if="${#fields.hasErrors('nightsOnTrail')}"
-					th:errors="*{nightsOnTrail}">
+			<div class="mb-3">
+				<label for="location" class="form-label">Trail Location <small>(city,
+						state)</small></label> <input type="text" th:field="*{location}"
+					class="form-control" id="lastName">
+				<div th:if="${#fields.hasErrors('location')}"
+					th:errors="*{location}"></div>
 			</div>
-		</div>
-		<div class="mb-3">
-			<label for="location" class="form-label">Trail Location <small>(city, state)</small></label> 
-			<input type="text" th:field="*{location}" class="form-control" id="lastName">
-			<div th:if="${#fields.hasErrors('location')}"
-					th:errors="*{location}">
+			<div class="mb-3">
+				<label for="nightsOnTrail" class="form-label">Number of
+					Nights on Trail</label> <input type="number" th:field="*{nightsOnTrail}"
+					class="form-control" id="nights">
+				<div th:if="${#fields.hasErrors('nightsOnTrail')}"
+					th:errors="*{nightsOnTrail}"></div>
 			</div>
-		</div>
-		<div>
-			<button type="submit" class="btn btn-warning" id="button">Submit</button>
-		</div>
-	</form>
+			<div>
+				<button type="submit" class="btn btn-warning" id="button">Submit</button>
+			</div>
+		</form>
+	</div>
+	<div>
+		<a th:href="@{/dataSummary}" class="link"><small>Data Summary</small></a>
 	</div>
 
-<div class="link">
-<!-- 	<a th:href="@{'http://localhost:8080/console/'}"><small>Data Summary</small></a> -->
-	
-	<a th:href="@{/dataSummary}"><small>Data Summary</small></a>
-	
-	</div>
-
-<script
-	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
-	integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
-	integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
-	crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+		integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+		integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+		crossorigin="anonymous"></script>
 </body>
 </html>
 
 
-		
-		<!-- Last Name Submission -->
-<!-- 		<div class="mb-3"> -->
-<!-- 			<label for="lastName" class="form-label">Emergency Contact E-mail</label>  -->
-<!-- 			<input type="text" th:field="*{lastName}" class="form-control" id="lastName"> -->
-<!-- 			<div th:if="${#fields.hasErrors('lastName')}" -->
-<!-- 					th:errors="*{lastName}"> -->
-<!-- 			</div> -->
-			<!-- Email Submission -->
-		
+
+

@@ -1,41 +1,46 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 <meta charset="UTF-8">
-	<title>Data Summary</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" 
-rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-<link th:href="@{/styleSheets/custom.css}" rel="stylesheet" type="text/css">
+<title>Data Summary</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+	crossorigin="anonymous">
+<link th:href="@{/styleSheets/custom.css}" rel="stylesheet"
+	type="text/css">
 </head>
 <body id="background">
-<div class="container">
-	
-<!--  ADDED TO SHOW JAVA METHODS IN HTML -->
-	
-	<h2 class="head"> Data Summary </h2>
-	
-	<h3 class="head">Backpackers on the Trail: </h3>
-	
-		<div  th:text="${details}" class="data"></div>
-	
-	<h4 class="head">So far, you've done these hikes:</h4>
-	
-		<div th:text="${trails}" class="data"></div>
-	
-	<h4 class="head">So far, you have Backpacked these trails: </h4>
+	<div class="container">
+		<h5 class="head">
+			Your Buddies on the Trail! 
+			<br>
+			<span class="style">RIGHT NOW: </span>
+		</h5>
+		<br>
+		<div th:text="${details}" class="data"></div>
+		<br>
 		
-		<div th:text="${trips}" class="data"></div>
-	
-	<!--  **SHOULD THIS BE A GET OR A POST?? -->
-	<form th:action="@{/logout}" method="get" class="signout">
-   		<button type="submit" value="Sign Out" class="btn btn-sm btn-warning">Sign Out</button>
-   	</form>
-</div>
-   	<a th:href="@{/index}"><small>Home</small></a>
+		<h5 class="style">All Past Hikes:</h5>
+		<div th:text="${trails}" class="data"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" 
-integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" 
-integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+		<a th:href="@{/logout}" type="submit" value="Sign Out"
+			class="btn btn-sm btn-warning" id="signout">Sign Out</a>
+	</div>
+	<div>
+		<a th:href="@{/index}" class="link"><small>Home</small></a>
+	</div>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+		integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+		integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+		crossorigin="anonymous"></script>
 </body>
 </html>

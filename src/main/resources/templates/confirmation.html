@@ -18,26 +18,32 @@
 </head>
 <body id="background">
 	<div class="container">
-		<h1>Success!! Your information as follows has been sent to:</h1>
-		<h2>Emergency Contact Email</h2>
-		<h2 th:text="${contactEmail}"></h2>
-		<h3>Your Name:</h3>
-		<div th:text="${name}"></div>
-		<h3>Number of Nights on Trail:</h3>
-		<div th:text="${nightsOnTrail}"></div>
-		<h3>Name of Trail:</h3>
-		<div th:text="${nameOfTrail}"></div>
-		<h3>Location of Trail:</h3>
-		<div th:text="${location}"></div>
+		<h1 class="success">Success!!</h1>
 
-		<!-- NEED TO FIGURE OUT HOW TO PUT THE DARE THROUGH -->
-		<h3>Date/Time Sent:</h3>
-		<div th:text="${startedTrailAt}"></div>
-
+		<h2 class="head">
+		Your information has been safely sent to your <span class="style">Trail Buddy</span> at:
+		</h2>
+		<br>
+		<h2 th:text="${contactEmail}" class="data"></h2>
+		<br>
+		
+		<h3 class="style">Your Details:</h3>
+		<div th:text="${name}" class="data"></div>
+		
+		<h3 class="list">Nights on Trail:</h3>
+		<div th:text="${nightsOnTrail}" class="data"></div>
+		
+		<h3 class="list">Trail Name:</h3>
+		<div th:text="${nameOfTrail}" class="data"></div>
+		
+		<h3 class="list">Trail Location:</h3>
+		<div th:text="${location}" class="data"></div>
+		
+		<h3 class="list">Date/Time of Hike:</h3>
+		<div th:text="${startedTrailAt}" class="data"></div>
+		<br>
 	</div>
-	<form th:action="@{/index}" method="get">
-		<button type="submit" value="submit">Home</button>
-	</form>
+	<a th:href="@{/index}" class="link"><small>Home</small></a>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"

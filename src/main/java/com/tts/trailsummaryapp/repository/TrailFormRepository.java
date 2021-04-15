@@ -15,9 +15,7 @@ public interface TrailFormRepository extends CrudRepository<TrailForm, Long>
 	List<TrailForm> findByNameOfTrail(String nameOfTrail);
 	List<TrailForm> findByNightsOnTrail(Integer nightsOnTrail);
 	List<TrailForm> findByLocation(String location);
+	List<TrailForm> findByStartedAt(Date startedAt);
 	@Override
 	List<TrailForm> findAll();
-	
-	//added this findBy....
-	List<TrailForm> findByStartedAt(Date startedAt);
 }

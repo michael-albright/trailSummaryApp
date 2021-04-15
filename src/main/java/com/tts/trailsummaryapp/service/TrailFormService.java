@@ -39,13 +39,11 @@ public class TrailFormService
 		return trailFormRepository.findByNightsOnTrail(nightsOnTrail);
 	}
 	
-	//new
 	public List<TrailForm> findByLocation(String location)
 	{
 		return trailFormRepository.findByLocation(location);
 	}
 	
-	//new 
 	public List<TrailForm> findByStartedAt(Date startedAt)
 	{
 		return trailFormRepository.findByStartedAt(startedAt);
@@ -54,33 +52,3 @@ public class TrailFormService
 }
 	
 
-	
-//	public String gethikersAtNight()
-//	{
-//		if(hikersAtNight() == true)
-//			return "Name: " + currentTrailForm.getFirstName() + "\n" +
-//					"Amount of Hikers: " + currentTrailForm.getAmountOfHikers() + "\n" + 
-//					"Date/Time Started: " + currentTrailForm.getStartedAt();
-//	}
-	
-
-	
-	
-//	public List<TrailForm> onTrailToday()
-//	{	
-//		
-//		for(int i=0; i < trailForm.size(); i++)
-//		{
-//			
-//		}
-//	}
-	
-	
-/*			("Name: " + currentTrailForm.getFirstName() + "\n" +
-	"Amount of Hikers: " + currentTrailForm.getAmountOfHikers() + "\n" + 
-	"Date/Time Started: " + currentTrailForm.getStartedAt());
-	
-}
-
-	
-	*/
